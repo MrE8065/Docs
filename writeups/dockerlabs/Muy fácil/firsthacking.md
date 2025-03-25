@@ -1,7 +1,6 @@
 # FirstHacking (muy fácil)
 
 
-
 ## Escaneo de puertos
 
 Empezamos escaneando la máquina víctima con **nmap** para ver los puertos que tenga abiertos.
@@ -31,7 +30,7 @@ Aquí está el desglose de cada opción:
 
 * ``-oG allPorts`` → Guarda la salida en un archivo de texto llamado *allPorts*. **(OPCIONAL)**
 
-![resultado del comando](assets/firsthacking/nmap1.png)
+![resultado del comando](../assets/firsthacking/nmap1.png)
 
 Como puedes ver, solo está abierto el puerto **ftp**. Vamos a escanearlo otra vez con **nmap**, pero esta vez utilizando un conjunto de scripts predeterminado para obtener más información.
 
@@ -52,7 +51,7 @@ Aquí está el desglose de cada opción:
 
 * ``-oN targeted`` → Guarda la salida en un archivo de texto llamado *targeted*. **(OPCIONAL)**
 
-![resultado del comando](assets/firsthacking/nmap2.png)
+![resultado del comando](../assets/firsthacking/nmap2.png)
 
 Una vez tenemos claro cuales son los puertos vulnerables, pasamos a la acción.
 ***
@@ -67,7 +66,7 @@ Empezamos buscando un **exploit** en [ExploitDB](https://www.exploit-db.com/). P
 searchsploit vsftpd 2.3.4
 ```
 
-![resultado del comando](assets/firsthacking/searchsploit.png)
+![resultado del comando](../assets/firsthacking/searchsploit.png)
 
 ¡Parece que a dado resultado! Vemos que hay dos coincidencias.
 En realidad, las dos son el mismo exploit, solo que uno está alojado en [Metasploit](https://www.metasploit.com/).
@@ -79,7 +78,7 @@ Para ello, tendremos que abrir primero la consola de **Metasploit**.
 msfconsole
 ```
 
-![resultado del comando](assets/firsthacking/msfconsole.png)
+![resultado del comando](../assets/firsthacking/msfconsole.png)
 
 > Nota: puedes utilizar ``msfconsole -q`` para iniciar en modo silencioso (que no aparezcan mensajes).
 
@@ -90,7 +89,7 @@ search vsftpd 2.3.4
 ```
 
 
-![resultado del comando](assets/firsthacking/search.png)
+![resultado del comando](../assets/firsthacking/search.png)
 
 Vemos que aparece como la opción 0, por lo que utilizamos el siguiente comando para usarlo.
 
@@ -100,7 +99,7 @@ use 0
 
 Pero aparece un error...
 
-![resultado del comando](assets/firsthacking/use.png)
+![resultado del comando](../assets/firsthacking/use.png)
 
 Vamos a ver el porqué. Para ello utilizamos la opción ``info`` para ver la descripción del exploit.
 
@@ -110,7 +109,7 @@ info 0
 
 Verás que aparecen muchas líneas con información, pero nos centraremos en ***Basic options***.
 
-![resultado del comando](assets/firsthacking/info.png)
+![resultado del comando](../assets/firsthacking/info.png)
 
 ¡Claro, nos falta especificar la IP de la víctima!
 > Nota: verás que también aparece una variable para establecer el puerto del objetivo, pero en este caso no es necesario, ya que el predeterminado (21) nos sirve.
@@ -127,7 +126,7 @@ Para volver a iniciar el exploit ya solamente hace falta escribir ``exploit``.
 exploit
 ```
 
-![resultado del comando](assets/firsthacking/exploit.png)
+![resultado del comando](../assets/firsthacking/exploit.png)
 
 ***
 
