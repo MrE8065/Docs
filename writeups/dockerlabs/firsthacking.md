@@ -137,6 +137,7 @@ Te habrás dado cuenta que al estar en la shell, la terminal aparece "vacía". E
 
 ```shell
 script /dev/null -c bash
+stty raw -echo
 reset xterm
 export TERM=xterm
 export SHELL=/bin/bash
